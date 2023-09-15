@@ -1,0 +1,30 @@
+class Solution
+{
+public:
+
+vector<int>ans;
+
+void solve(int index, vector<int> arr, int sum){
+    
+    // Agar index array ke size se aage bdh gya hai to ans me sum ko dalo aur wps return kr jao
+    if(index==arr.size()){
+        ans.push_back(sum);
+        return;
+    }
+    
+    // Include
+    solve(index+1, arr, sum+arr[index]);
+    
+    // Exclude
+    solve(index+1, arr, sum);
+}
+
+
+    vector<int> subsetSums(vector<int> arr, int N)
+    {
+        int index=0;
+        int sum=0;
+        solve(index, arr, sum);
+        return ans;
+    }
+};
